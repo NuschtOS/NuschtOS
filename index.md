@@ -1,37 +1,97 @@
-## Welcome to GitHub Pages
+# NüschtOS
 
-You can use the [editor on GitHub](https://github.com/NuschtOS/NuschtOS/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Creating package
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### Example meta section
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```nix
+meta = with stdenv.lib; {
+  description = "A not to long description";
+  longDescription = ''
+    A bit more lengthy description
+    convering multiple
+    lines
+  '';
+  homepage = "nüschtos.de";
+  license = licenses.gpl3plus;
+  platforms = platforms.all;
+  maintainers = with maintainers; [ SuperSandro2000 ];
+};
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### Installing man pages and shell completion scripts
 
-### Jekyll Themes
+```nix
+{ installShellFiles }:
+...
+rec {
+  postInstall = ''
+    installManPage man/man1/*
+    installShellCompletion shellCompletion.sh
+  '';
+}
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/NuschtOS/NuschtOS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Using pytest
 
-### Support or Contact
+```nix
+{
+  checkInputs = [ pytestCheckHook ];
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+  disabledTests = [ "test_examples" "test_issue_22" ];
+  
+  pytestFlagsArray = [ "--ignore=Examples" ];
+}
+```
+
+#### Move to seperate output
+
+```nix
+  outputs = [ "out" "dev" ]; # or meta
+
+  postInstall = ''
+    moveToOutput "bin/xmlsec1-config" "$dev"
+  '';
+
+meta = {
+  outputsToInstall = [ "out" "dnsutils" "host" ];
+}
+```
+
+#### Keeping a failed nix-build and changing into
+
+```shell
+nix-shell -A ... -K
+# path to the kept build is shown
+cd /path/to/drv
+bash --rcfile env-vars
+# start debugging
+```
+
+#### breakpointHook
+
+```nix
+{
+  buildInputs = [ breakpointHook ];
+}
+```
+
+## Commands
+
+#### Build all maintainer packets
+
+```shell
+nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
+```
+
+#### Update all maintainer packets
+
+```shell
+nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
+```
+
+#### Evaluate default.nix in current directory for syntax or evaluation errors
+
+```shell
+nix-env -f . -qa
+```
