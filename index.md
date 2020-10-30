@@ -5,25 +5,27 @@
 #### Example meta section
 
 ```nix
-meta = with stdenv.lib; {
-  description = "A not to long description";
-  longDescription = ''
-    A bit more lengthy description
-    convering multiple
-    lines
-  '';
-  homepage = "nüschtos.de";
-  license = licenses.gpl3plus;
-  platforms = platforms.all;
-  maintainers = with maintainers; [ SuperSandro2000 ];
-};
+{
+  meta = with stdenv.lib; {
+    description = "A not to long description";
+    longDescription = ''
+      A bit more lengthy description
+      convering multiple
+      lines
+    '';
+    homepage = "nüschtos.de";
+    license = licenses.gpl3plus;
+    platforms = platforms.all;
+    maintainers = with maintainers; [ SuperSandro2000 ];
+  };
+}
 ```
 
 #### Installing man pages and shell completion scripts
 
 ```nix
 { installShellFiles }:
-...
+
 rec {
   postInstall = ''
     installManPage man/man1/*
@@ -47,6 +49,7 @@ rec {
 #### Move to seperate output
 
 ```nix
+{
   outputs = [ "out" "dev" ]; # or meta
 
   postInstall = ''
