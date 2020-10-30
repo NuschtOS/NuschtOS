@@ -99,6 +99,11 @@ nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
 ```shell
 nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
 ```
+#### Mark package as broken
+
+```shell
+nix-shell -p common-updater --run mark-broken package
+```
 
 #### Browse dependencies interactively
 
