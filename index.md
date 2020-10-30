@@ -81,6 +81,13 @@ bash --rcfile env-vars
 
 ## Commands
 
+#### Show build log of a package
+
+```shell
+nix log -f . package
+nix log nixpkgs.somafm-cli
+```
+
 #### Build all maintainer packets
 
 ```shell
