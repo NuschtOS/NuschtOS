@@ -79,6 +79,13 @@ bash --rcfile env-vars
 }
 ```
 
+#### Compile a static package or link with musl
+
+```shell
+nix-build -A pkgsStatic.package
+nix-build -A pkgsMusl.package
+```
+
 ## Commands
 
 #### Edit a package
