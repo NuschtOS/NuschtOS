@@ -90,10 +90,16 @@ nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
 nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
 ```
 
+#### Browse dependencies interactively
+
+```shell
+nix-tree $(nix-instantiate -A package)
+```
+
 #### Do nix repl cross arch
 
 ```shell
-nix-repl> (import ./. { system = "x86_64-darwin"; }).libretro.mame2016
+nix-repl> (import ./. { system = "x86_64-darwin"; }).package
 ```
 
 #### Evaluate default.nix in current directory for syntax or evaluation errors
