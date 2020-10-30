@@ -81,6 +81,12 @@ bash --rcfile env-vars
 
 ## Commands
 
+#### Edit a package
+
+```shell
+nix edit -f . package
+```
+
 #### Show build log of a package
 
 ```shell
