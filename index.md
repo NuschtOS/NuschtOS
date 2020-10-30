@@ -111,14 +111,14 @@ nix-shell -p common-updater --run mark-broken package
 nix-tree $(nix-instantiate -A package)
 ```
 
-#### Do nix repl cross arch
-
-```shell
-nix-repl> (import ./. { system = "x86_64-darwin"; }).package
-```
-
 #### Evaluate default.nix in current directory for syntax or evaluation errors
 
 ```shell
 nix-env -f . -qa
+```
+
+#### Do nix repl cross arch
+
+```shell
+nix-repl> (import ./. { system = "x86_64-darwin"; }).package
 ```
