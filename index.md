@@ -64,7 +64,7 @@ meta = {
 #### Keeping a failed nix-build and changing into
 
 ```shell
-nix-shell -A ... -K
+nix-build -A ... -K
 # path to the kept build is shown
 cd /path/to/drv
 bash --rcfile env-vars
