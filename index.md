@@ -115,7 +115,7 @@ nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
 #### Mark package as broken
 
 ```shell
-nix-shell -p common-updater-scripts --run mark-broken package
+./pkgs/common-updater/scripts/mark-broken package
 ```
 
 #### Browse dependencies interactively
