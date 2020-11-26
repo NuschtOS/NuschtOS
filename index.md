@@ -88,6 +88,12 @@ nix-build -A pkgsMusl.package
 
 ## Commands
 
+#### Build a package with an override
+
+```shell
+nix-build -E "with import ./nixpkgs {}; postfix.override { withMySQL = true; }"
+```
+
 #### Edit a package
 
 ```shell
