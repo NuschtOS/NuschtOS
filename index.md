@@ -118,6 +118,7 @@ nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
 ```shell
 nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
 ```
+
 #### Mark package as broken
 
 ```shell
@@ -140,4 +141,10 @@ nix-env -f . -qa
 
 ```shell
 nix-repl> (import ./. { system = "x86_64-darwin"; }).package
+```
+
+#### Update URLs which redirect to https
+
+```shell
+./maintainers/scripts/update_redirected_urls.sh
 ```
