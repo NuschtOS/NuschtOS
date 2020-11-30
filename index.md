@@ -107,13 +107,13 @@ nix log -f . package
 nix log nixpkgs.somafm-cli
 ```
 
-#### Build all maintainer packets
+#### Build all maintainer packages
 
 ```shell
 nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
 ```
 
-#### Update all maintainer packets
+#### Update all maintainer packages
 
 ```shell
 nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
