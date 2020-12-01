@@ -116,7 +116,7 @@ nix-build maintainers/scripts/build.nix --argstr maintainer SuperSandro2000
 #### Update all maintainer packages
 
 ```shell
-nix-build maintainers/scripts/update.nix --argstr maintainer SuperSandro2000
+nix-shell maintainers/scripts/update.nix --argstr maintainer SuperSandro2000 --argstr keep-going true
 ```
 
 #### Mark package as broken
