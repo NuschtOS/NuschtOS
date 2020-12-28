@@ -64,11 +64,13 @@ meta = {
 #### Keeping a failed nix-build and changing into
 
 ```shell
-nix-build -A ... -K
+nix-build -A package -K
 # path to the kept build is shown
-cd /path/to/drv
-bash --rcfile env-vars
+nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
+export out=/tmp/path/to/some.drv-0
 # start debugging
+set -x
+buildPhase
 ```
 
 #### breakpointHook
