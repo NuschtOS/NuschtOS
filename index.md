@@ -14,7 +14,7 @@
       lines
     '';
     homepage = "nüschtos.de";
-    license = licenses.gpl3plus;
+    license = licenses.gpl3Plus;
     platforms = platforms.all;
     maintainers = with maintainers; [ SuperSandro2000 ];
   };
