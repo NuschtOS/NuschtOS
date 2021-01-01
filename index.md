@@ -150,3 +150,9 @@ nix-repl> (import ./. { system = "x86_64-darwin"; }).package
 ```shell
 ./maintainers/scripts/update_redirected_urls.sh
 ```
+
+#### Convert double quoted strings in descriptions to single quotes
+
+```shell
+git ls-files | grep pkgs | xargs sed -i -e -E "s#description.*''(.*)''#description = \"\1\"#g"
+```
