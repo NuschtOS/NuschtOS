@@ -156,3 +156,9 @@ nix-repl> (import ./. { system = "x86_64-darwin"; }).package
 ```shell
 git ls-files | grep pkgs | xargs sed -i -e -E "s#description.*''(.*)''#description = \"\1\"#g"
 ```
+
+#### Remove `enableParallelBuilding = true` if using cmake
+
+```shell
+ag -l "cmake" | xargs ag -l "enableParallelBuilding = true" > check.txt && wc -l check.txt
+```
