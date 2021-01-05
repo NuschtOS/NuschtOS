@@ -162,3 +162,9 @@ git ls-files | grep pkgs | xargs sed -i -e -E "s#description.*''(.*)''#descripti
 ```shell
 ag -l "cmake" | xargs ag -l "enableParallelBuilding = true" > check.txt && wc -l check.txt
 ```
+
+#### Check the amount of expected rebuilds
+
+```shell
+maintainers/scripts/rebuild-amount.sh
+```
