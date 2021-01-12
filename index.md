@@ -168,3 +168,9 @@ ag -l "cmake" | xargs ag -l "enableParallelBuilding = true" > check.txt && wc -l
 ```shell
 maintainers/scripts/rebuild-amount.sh
 ```
+
+#### Test tree wide changes
+
+```shell
+nix-shell -p hydra-unstable --run "hydra-eval-jobs -I nixpkgs=$PWD nixos/release.nix"
+```
