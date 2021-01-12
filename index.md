@@ -173,4 +173,5 @@ maintainers/scripts/rebuild-amount.sh
 
 ```shell
 nix-shell -p hydra-unstable --run "hydra-eval-jobs -I nixpkgs=$PWD nixos/release.nix"
+nix-shell -p hydra-unstable --run "hydra-eval-jobs -I nixpkgs=$PWD pkgs/top-level/release.nix"
 ```
