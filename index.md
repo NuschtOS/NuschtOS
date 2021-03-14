@@ -70,6 +70,7 @@ nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --p
 export out=/tmp/nix-build-package-1.0.0.drv-0
 sudo chown $USER:$USER -R $out/env-vars
 bash --rcfile $out
+cd $out/*/
 # start debugging
 buildPhase
 ```
