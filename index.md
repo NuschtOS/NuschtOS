@@ -64,12 +64,13 @@ meta = {
 #### Keeping a failed nix-build and changing into
 
 ```shell
-nix-build -A package -K
+nix-build --builders '' -K -A package
 # path to the kept build is shown
 nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
-export out=/tmp/path/to/some.drv-0
+export out=/tmp/nix-build-package-1.0.0.drv-0
+sudo chown $USER:$USER -R $out/env-vars
+bash --rcfile $out
 # start debugging
-set -x
 buildPhase
 ```
 
