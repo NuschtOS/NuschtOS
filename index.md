@@ -71,6 +71,7 @@ export out=/tmp/nix-build-package-1.0.0.drv-0
 sudo chown $USER:$USER -R $out/env-vars
 bash --rcfile $out
 cd $out/*/
+export export TMP=$PWD TMPDIR=$PWD
 # start debugging
 buildPhase
 ```
