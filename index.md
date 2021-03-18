@@ -72,7 +72,7 @@ sudo chown $USER:$USER -R $out
 nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
 bash --rcfile $out
 cd $out/
-export export TMP=$PWD TMPDIR=$PWD
+export TMP=$PWD TMPDIR=$PWD
 # start debugging
 buildPhase
 ...
