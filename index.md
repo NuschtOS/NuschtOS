@@ -65,15 +65,17 @@ meta = {
 
 ```shell
 nix-build --builders '' -K -A package
-# path to the kept build is shown
-nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
+# path to the kept build directory under /tmp is shown
 export out=/tmp/nix-build-package-1.0.0.drv-0
-sudo chown $USER:$USER -R $out/env-vars
+# the following might be required if you run into permission issues
+sudo chown $USER:$USER -R $out
+nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
 bash --rcfile $out
-cd $out/*/
+cd $out/
 export export TMP=$PWD TMPDIR=$PWD
 # start debugging
 buildPhase
+...
 ```
 
 #### breakpointHook
