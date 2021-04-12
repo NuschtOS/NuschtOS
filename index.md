@@ -93,6 +93,17 @@ nix-build -A pkgsStatic.package
 nix-build -A pkgsMusl.package
 ```
 
+#### Rebase a branch on staging
+
+Replace origin with the name of the remote pointing to NixOS/nixpkgs.
+
+```ShellSession
+$ git fetch origin
+$ git rebase "$(git merge-base origin/master origin/staging)"
+# maybe resolve conflicts
+$ git push -f <your remote> <your branch>
+```
+
 ## Commands
 
 #### Build a package with an override
