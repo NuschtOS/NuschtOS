@@ -69,8 +69,8 @@ nix-build --builders '' -K -A package
 export out=/tmp/nix-build-package-1.0.0.drv-0
 # the following might be required if you run into permission issues
 sudo chown $USER:$USER -R $out
-nix-shell -E "with import <nixpkgs> {}; callPackage /path/to/package.nix {}" --pure
-bash --rcfile $out
+nix-shell -E --pure 'with import ./. { }; package'
+bash --rcfile $out/env-vars
 cd $out/
 export TMP=$PWD TMPDIR=$PWD
 # start debugging
